@@ -11,14 +11,10 @@ import static jdk.nashorn.internal.objects.NativeArray.sort;
 
 public class MainThead {
 
-    private Transcript transcript = new Transcript();
-    List<Transcript> transcriptsArray = new ArrayList<Transcript>();
-
     public static void main(String[] args) throws IOException, NoSuchFieldException, IllegalAccessException {
-
         Transcript transcript = new Transcript();
-        List<Transcript> transcriptsArray = new ArrayList<Transcript>();
 
+        List<Transcript> transcriptsArray = new ArrayList<Transcript>();
 
         ArrayList<Integer> classRoomIdsArray = new ArrayList<>();
         ArrayList<Integer> subjectIdsArray = new ArrayList<>();
@@ -52,10 +48,10 @@ public class MainThead {
                             Integer.parseInt(infoArray[6])
                     );
 
-                    if (classRoomIdsArray.contains(Integer.parseInt(infoArray[4])) && subjectIdsArray.contains(Integer.parseInt(infoArray[5]))) {
+//                    transcriptsArray.add(record);
+                    if(classRoomIdsArray.contains(Integer.parseInt(infoArray[4])) && subjectIdsArray.contains(Integer.parseInt(infoArray[5]))){
                         transcriptsArray.add(record);
                     }
-//
 
                     // Kiểm tra điều kiện lớp học và môn học có nằm trong phần đã khai báo
                 } finally {
@@ -63,11 +59,10 @@ public class MainThead {
                 }
             }
             fr.close();
-
-
-            quickSort(transcript, , 2 );
+            Collections.sort(transcriptsArray);
+//            Arrays.sort(transcriptsArray);
             System.out.println(transcriptsArray.size());
-            for (Transcript temp : transcriptsArray) {
+            for(Transcript temp: transcriptsArray){
                 System.out.println(temp.getName() + "-" + temp.getPoint());
                 fw.write(temp.toString() + "\n");
             }
@@ -78,60 +73,50 @@ public class MainThead {
         }
     }
 
-    // hàm mới
-//    public void quickSortPrint(Transcript transcript,int[] x) {
-//        x = new int[transcript.getPoint()];
-//        printArray(x);
-//
-//        int left = 0;
-//        int right = x.length - 1;
-//
-//        quickSort(x, left, right);
-//        printArray(x);
+//    void quickSort (List<Transcript> transcriptsArray[], int left, int right) {
+//        int i, j, x;
+//        x = a[(left + right) / 2];
+//        i = left; j = right;
+//        do {
+//            while (a[i] < x) i++;
+//            while (a[j] > x) j--;
+//            if (i <= j) { swap(a, i, j); i++; j--; }
+//        } while (i <= j);
+//        if (left < j) quickSort(a, left, j);
+//        if(i < right) quickSort(a, i, right);
 //    }
 
-    public static void quickSort(int[], int left, int right) {
-        if (arr == null || transcriptsArray.length == 0)
-            return;
 
-        if (left >= right)
-            return;
-
-        int middle = left + (right - left) / 2;
-        int pivot = arr[middle];
-        int i = left, j = right;
-
-        while (i <= j) {
-            while (arr[i] < pivot) {
-                i++;
-            }
-
-            while (arr[j] > pivot) {
-                j--;
-            }
-
-            if (i <= j) {
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-                i++;
-                j--;
-            }
-        }
-
-        if (left < j)
-            quickSort(arr, left, j);
-
-        if (right > i)
-            quickSort(arr, i, right);
-    }
-
-//    public static void printArray(int[] arr) {
-//        for(int i = 0; i < arr.length; i++) {
-//            System.out.print(arr[i] + " ");
+//    void binaryInsertionSort ( List transcriptsArray, int n) {
+//        int left, right, mid, x;
+//        for (int i = 1; i < n; i++) {
+//            x = transcriptsArray[i]; left = 0; right = i - 1;
+//            while (left <= right) {
+//                mid = (left + right) / 2;
+//                if (x < transcriptsArray[mid]) right = mid - 1;
+//                else left = mid + 1;
+//            }
+//            for (int j = i - 1; j >= left; j--) transcriptsArray[j + 1] = transcriptsArray[j];
+//            transcriptsArray[left] = x;
 //        }
-//
-//        System.out.println();
 //    }
+}
 
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+//    pass wf medlink
+//        Medlink@6868
+//
